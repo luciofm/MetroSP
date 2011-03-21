@@ -24,6 +24,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +38,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class MetroSP extends Activity {
+public class MetroSP extends Activity implements Runnable {
 	ListView listview;
 	private ArrayList<MetroLine> metroLines;
 	private MetroLineAdapter adapter;
@@ -55,11 +57,27 @@ public class MetroSP extends Activity {
 		listview = (ListView) findViewById(R.id.ListView1);
 		listview.setAdapter(adapter);        
         
-        loadData();
-        
-        adapter.notifyDataSetChanged();
+		Thread thread = new Thread(this);
+		thread.start();
     }
-    
+
+	public void run() {
+		Message msg;
+
+		loadData();
+
+		msg = handler.obtainMessage();
+		handler.sendMessage(msg);
+	}
+
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			adapter.notifyDataSetChanged();
+		}
+
+	};
+
     public class MetroLine {
     	private String _Line;
     	private String _Color;
