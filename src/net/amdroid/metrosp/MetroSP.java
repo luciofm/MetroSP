@@ -1,0 +1,221 @@
+package net.amdroid.metrosp;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EncodingUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.URLUtil;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class MetroSP extends Activity {
+	ListView listview;
+	private ArrayList<MetroLine> metroLines;
+	private MetroLineAdapter adapter;
+
+	
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+		metroLines = new ArrayList<MetroLine>();
+		int resID = R.layout.list_item;
+		adapter = new MetroLineAdapter(this, resID, metroLines);
+
+		listview = (ListView) findViewById(R.id.ListView1);
+		listview.setAdapter(adapter);        
+        
+        loadData();
+        
+        adapter.notifyDataSetChanged();
+    }
+    
+    public class MetroLine {
+    	private String _Line;
+    	private String _Color;
+    	private String _Status;
+    	private String _LongStatus;
+		private String _StatusColor;
+    	
+		public MetroLine(String _Line, String _Color, String _Status,
+				String _LongStatus, String _StatusColor) {
+			super();
+			this._Line = _Line;
+			this._Color = _Color;
+			this._Status = _Status;
+			this._LongStatus = _LongStatus;
+			this._StatusColor = _StatusColor;
+		}
+
+		public String get_Line() {
+			return _Line;
+		}
+
+		public String get_Color() {
+			return _Color;
+		}
+
+		public String get_Status() {
+			return _Status;
+		}
+
+		public String get_LongStatus() {
+			return _LongStatus;
+		}
+   		public String get_StatusColor() {
+			return _StatusColor;
+		}
+ 	}
+    
+    public class MetroLineAdapter extends ArrayAdapter<MetroLine> {
+    	int resource;
+    	Context context;
+
+    	public MetroLineAdapter(Context _context,
+    			int _resource,
+    			List<MetroLine> _items) {
+    		super(_context, _resource, _items);
+    		context = _context;
+    		resource = _resource;
+    	}
+
+    	@Override
+    	public View getView(int position, View convertView, ViewGroup parent) {
+    		RelativeLayout itemView;
+    		int status_res;
+
+    		MetroLine item = getItem(position);
+
+    		String line = item.get_Line();
+    		String color = item.get_Color();
+    		String status = item.get_Status();
+    		String long_status = item.get_LongStatus();
+    		String full_status = null;
+    		if (long_status.length() > 1)
+    			full_status = status + " - " + long_status;
+    		else
+    			full_status = status;
+
+    		if (convertView == null) {
+    			itemView = new RelativeLayout(getContext());
+    			String inflater = Context.LAYOUT_INFLATER_SERVICE;
+    			LayoutInflater vi = (LayoutInflater)getContext().getSystemService(inflater);
+    			vi.inflate(resource, itemView, true);
+    		} else {
+    			itemView = (RelativeLayout)convertView;
+    		}
+    		
+    		itemView.setTag(new String(line));
+    		
+    		TextView textLinha = (TextView) itemView.findViewById(R.id.textLinha);
+    		TextView textStatus = (TextView) itemView.findViewById(R.id.textStatus);
+    		ImageView icon = (ImageView)itemView.findViewById(R.id.imageView1);
+    		
+    		textLinha.setText(line);
+    		textStatus.setText(full_status);
+
+    		Resources r = context.getResources();
+    		status_res = r.getIdentifier(item.get_StatusColor().toLowerCase(), "drawable", "net.amdroid.metrosp");
+    		Bitmap status_img = BitmapFactory.decodeResource(context.getResources(), status_res);
+    		
+    		icon.setImageBitmap(status_img);
+    		return itemView;
+    	}
+    }
+
+	private void loadData() {
+        DefaultHttpClient httpclient = new DefaultHttpClient();
+        HttpResponse response = null;
+        
+        HttpGet httpget = new HttpGet("http://www.metro.sp.gov.br/MetroStatusLinha/diretoDoMetro.aspx");
+		try {
+			response = httpclient.execute(httpget);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			Log.d("MetroSP", "MetroSP() <- ClientProtocolException");
+			e.printStackTrace();
+			return;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.d("MetroSP", "MetroSP() <- IOException");
+			e.printStackTrace();
+			return;
+		}
+
+        HttpEntity entity = response.getEntity();
+        if (entity != null) {
+			try {
+				parseData(entity.getContent());
+				entity.consumeContent();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				Log.d("MetroSP", "MetroSP() <- Exception");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void parseData(InputStream content) throws Exception {
+		
+		BufferedReader r = new BufferedReader(new InputStreamReader(content));
+		StringBuilder total = new StringBuilder();
+		String line, buffer;
+		while ((line = r.readLine()) != null) {
+		    total.append(line);
+		}
+		buffer = total.toString();
+		
+		Log.d("MetroSP", "MetroSP()");
+		
+		int where = buffer.indexOf("objArrLinhas") + 15;
+		int end = buffer.indexOf("function abreDetalheLinha") - 1;
+		String jsonstr = buffer.substring(where, end);
+		
+		JSONArray array = (JSONArray) new JSONTokener(jsonstr).nextValue();
+		for (int i = 0; i < array.length(); i++) {
+			JSONObject obj = array.getJSONObject(i);
+			
+			String cor = obj.getString("cor");
+			String linha = obj.getString("linha");
+			String status = obj.getString("status");
+			String msgstatus = Html.fromHtml(obj.getString("msgStatus")).toString();
+			String tmp = obj.getString("imagem");
+			String status_color = tmp.substring(tmp.indexOf("sinal-") + 6, tmp.indexOf("-linha"));
+			
+			MetroLine item = new MetroLine(linha, cor, status, msgstatus, status_color);
+			metroLines.add(item);
+		}
+		
+		Log.d("MetroSP", "MetroSP() -> " + jsonstr);
+	}
+}
