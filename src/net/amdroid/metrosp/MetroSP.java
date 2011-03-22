@@ -30,9 +30,13 @@ import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -42,21 +46,39 @@ public class MetroSP extends Activity implements Runnable {
 	ListView listview;
 	private ArrayList<MetroLine> metroLines;
 	private MetroLineAdapter adapter;
+	private String last_refresh;
+	private TextView title;
+	private Button refresh_btn;
 
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+
         setContentView(R.layout.main);
+
+        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
 
 		metroLines = new ArrayList<MetroLine>();
 		int resID = R.layout.list_item;
 		adapter = new MetroLineAdapter(this, resID, metroLines);
 
 		listview = (ListView) findViewById(R.id.ListView1);
-		listview.setAdapter(adapter);        
-        
+		title = (TextView) findViewById(R.id.app_title);
+		refresh_btn = (Button) findViewById(R.id.refresh_button);
+		listview.setAdapter(adapter);
+
+		refresh_btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Log.d("MetroSP", "Refresh");
+			}
+		});
+
 		Thread thread = new Thread(this);
 		thread.start();
     }
@@ -64,6 +86,7 @@ public class MetroSP extends Activity implements Runnable {
 	public void run() {
 		Message msg;
 
+		metroLines.clear();
 		loadData();
 
 		msg = handler.obtainMessage();
@@ -74,6 +97,7 @@ public class MetroSP extends Activity implements Runnable {
 		@Override
 		public void handleMessage(Message msg) {
 			adapter.notifyDataSetChanged();
+			title.setText(last_refresh);
 		}
 
 	};
@@ -234,6 +258,10 @@ public class MetroSP extends Activity implements Runnable {
 			metroLines.add(item);
 		}
 		
+		where = buffer.indexOf("dataAtualizacao\">") + "dataAtualizacao\">".length();
+		end = buffer.indexOf("</span>", where);
+		last_refresh = Html.fromHtml(buffer.substring(where, end)).toString();
+
 		Log.d("MetroSP", "MetroSP() -> " + jsonstr);
 	}
 }
