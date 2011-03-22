@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EncodingUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -32,9 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,6 +46,9 @@ public class MetroSP extends Activity implements Runnable {
 	private TextView title;
 	private Button refresh_btn;
 	private boolean refreshing = false;
+
+	private static final int LOAD_ERROR = 0;
+	private static final int LOAD_OK = 1;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -101,17 +100,22 @@ public class MetroSP extends Activity implements Runnable {
 
 		refreshing = true;
 		metroLines.clear();
-		loadData();
+		int ret = loadData();
 
 		msg = handler.obtainMessage();
+		msg.arg1 = ret;
 		handler.sendMessage(msg);
 	}
 
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			adapter.notifyDataSetChanged();
-			title.setText(last_refresh);
+			if (msg.arg1 == LOAD_OK) {
+				title.setText(last_refresh);
+				adapter.notifyDataSetChanged();
+			} else {
+				title.setText("Erro carregando dados.");
+			}
 			refreshing = false;
 		}
 	};
@@ -214,7 +218,7 @@ public class MetroSP extends Activity implements Runnable {
 		}
 	}
 
-	private void loadData() {
+	private int loadData() {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpResponse response = null;
 
@@ -226,12 +230,12 @@ public class MetroSP extends Activity implements Runnable {
 			// TODO Auto-generated catch block
 			Log.d("MetroSP", "MetroSP() <- ClientProtocolException");
 			e.printStackTrace();
-			return;
+			return LOAD_ERROR;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Log.d("MetroSP", "MetroSP() <- IOException");
 			e.printStackTrace();
-			return;
+			return LOAD_ERROR;
 		}
 
 		HttpEntity entity = response.getEntity();
@@ -239,16 +243,17 @@ public class MetroSP extends Activity implements Runnable {
 			try {
 				parseData(entity.getContent());
 				entity.consumeContent();
+				return LOAD_OK;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				Log.d("MetroSP", "MetroSP() <- Exception");
 				e.printStackTrace();
 			}
 		}
+		return LOAD_ERROR;
 	}
 
 	private void parseData(InputStream content) throws Exception {
-
 		BufferedReader r = new BufferedReader(new InputStreamReader(content));
 		StringBuilder total = new StringBuilder();
 		String line, buffer;
