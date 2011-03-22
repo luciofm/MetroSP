@@ -49,6 +49,7 @@ public class MetroSP extends Activity implements Runnable {
 	private String last_refresh;
 	private TextView title;
 	private Button refresh_btn;
+	private boolean refreshing = false;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -76,9 +77,18 @@ public class MetroSP extends Activity implements Runnable {
 			@Override
 			public void onClick(View v) {
 				Log.d("MetroSP", "Refresh");
+				refreshData();
 			}
 		});
 
+		refreshData();
+	}
+
+	public void refreshData() {
+		if (refreshing)
+			return;
+
+		title.setText("Carregando...");
 		Thread thread = new Thread(this);
 		thread.start();
 	}
@@ -86,6 +96,10 @@ public class MetroSP extends Activity implements Runnable {
 	public void run() {
 		Message msg;
 
+		if (refreshing)
+			return;
+
+		refreshing = true;
 		metroLines.clear();
 		loadData();
 
@@ -98,8 +112,8 @@ public class MetroSP extends Activity implements Runnable {
 		public void handleMessage(Message msg) {
 			adapter.notifyDataSetChanged();
 			title.setText(last_refresh);
+			refreshing = false;
 		}
-
 	};
 
 	public class MetroLine {
