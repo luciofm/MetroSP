@@ -41,6 +41,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -81,17 +85,24 @@ public class MetroSP extends Activity implements Runnable {
 		super.onCreate(savedInstanceState);
 
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-
 		setContentView(R.layout.main);
+
+	    AdView adView = new AdView(this, AdSize.BANNER, YOUR_ADMOB_ID_HERE);
+	    LinearLayout layout = (LinearLayout)findViewById(R.id.addsLayout);
+	    android.view.ViewGroup.LayoutParams params = layout.getLayoutParams();
+	    layout.addView(adView);
+	    AdRequest adrequest = new AdRequest();
+	    adView.loadAd(adrequest);
 
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
 				R.layout.window_title);
+
 
 		metroLines = new ArrayList<MetroLine>();
 		int resID = R.layout.list_item;
 		adapter = new MetroLineAdapter(this, resID, metroLines);
 
-		listview = (ListView) findViewById(R.id.ListView1);
+		listview = (ListView) findViewById(R.id.metroList);
 		title = (TextView) findViewById(R.id.app_title);
 		refresh_btn = (Button) findViewById(R.id.refresh_button);
 		listview.setAdapter(adapter);
