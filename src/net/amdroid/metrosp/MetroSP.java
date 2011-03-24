@@ -162,15 +162,17 @@ public class MetroSP extends Activity implements Runnable {
 		private String _Status;
 		private String _LongStatus;
 		private String _StatusColor;
+		private String _Description;
 
 		public MetroLine(String _Line, String _Color, String _Status,
-				String _LongStatus, String _StatusColor) {
+				String _LongStatus, String _StatusColor, String _Description) {
 			super();
 			this._Line = _Line;
 			this._Color = _Color;
 			this._Status = _Status;
 			this._LongStatus = _LongStatus;
 			this._StatusColor = _StatusColor;
+			this._Description = _Description;
 		}
 
 		public String get_Line() {
@@ -191,6 +193,10 @@ public class MetroSP extends Activity implements Runnable {
 
 		public String get_StatusColor() {
 			return _StatusColor;
+		}
+
+		public String get_Description() {
+			return _Description;
 		}
 	}
 
@@ -316,9 +322,10 @@ public class MetroSP extends Activity implements Runnable {
 			String tmp = obj.getString("imagem");
 			String status_color = tmp.substring(tmp.indexOf("sinal-") + 6,
 					tmp.indexOf("-linha"));
+			String description = Html.fromHtml(obj.getString("descricao")).toString();
 
 			MetroLine item = new MetroLine(linha, cor, status, msgstatus,
-					status_color);
+					status_color, description);
 			metroLines.add(item);
 		}
 
