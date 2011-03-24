@@ -2,8 +2,8 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="80dip">
-    <ImageView android:id="@+id/imageView1" android:src="@drawable/verde" android:layout_alignParentLeft="true" android:layout_width="wrap_content" android:layout_height="fill_parent"></ImageView>
-    <TextView android:layout_height="wrap_content" android:layout_toRightOf="@+id/imageView1" android:text="TextView" android:layout_alignTop="@+id/imageView1" android:id="@+id/textLinha" android:layout_marginLeft="15dip" android:textStyle="bold" android:layout_width="fill_parent"></TextView>
-    <TextView android:layout_height="wrap_content" android:text="TextView" android:layout_below="@+id/textLinha" android:layout_alignLeft="@+id/textLinha" android:layout_alignRight="@+id/textLinha" android:id="@+id/textStatus" android:lines="2" android:layout_width="fill_parent"></TextView>
+  android:layout_height="60dip">
+    <ImageView android:id="@+id/imageView1" android:src="@drawable/verde" android:layout_alignParentLeft="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:paddingLeft="5sp" android:paddingTop="5sp"></ImageView>
+    <TextView android:layout_height="wrap_content" android:layout_toRightOf="@+id/imageView1" android:text="TextView" android:layout_alignTop="@+id/imageView1" android:id="@+id/textLinha" android:layout_marginLeft="15dip" android:textStyle="bold" android:layout_width="fill_parent" android:paddingRight="5dip" android:paddingTop="5sp" android:textColor="@color/textcolor"></TextView>
+    <TextView android:layout_height="wrap_content" android:text="TextView" android:layout_below="@+id/textLinha" android:layout_alignLeft="@+id/textLinha" android:layout_alignRight="@+id/textLinha" android:id="@+id/textStatus" android:lines="1" android:layout_width="fill_parent" android:textColor="@color/textcolor"></TextView>
 </RelativeLayout>
