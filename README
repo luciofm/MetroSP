@@ -1,3 +1,5 @@
 Metro SP
 
 Scrapper de informacoes sobre as condicoes atuais do Metro SP.
+
+You must add GoogleAdMobAdsSDK-4.0.2.jar to libs/ directory to be able to build this project.
