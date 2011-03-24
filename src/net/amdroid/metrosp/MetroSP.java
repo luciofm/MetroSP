@@ -264,8 +264,7 @@ public class MetroSP extends Activity implements Runnable {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		HttpResponse response = null;
 
-		HttpGet httpget = new HttpGet(
-				"http://www.metro.sp.gov.br/MetroStatusLinha/diretoDoMetro.aspx");
+		HttpGet httpget = new HttpGet(getString(R.string.metro_url));
 		try {
 			response = httpclient.execute(httpget);
 		} catch (ClientProtocolException e) {
