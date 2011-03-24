@@ -55,14 +55,21 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Html;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ViewFlipper;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -75,6 +82,13 @@ public class MetroSP extends Activity implements Runnable {
 	private TextView title;
 	private Button refresh_btn;
 	private boolean refreshing = false;
+
+	private ViewFlipper viewFlipper;
+	private Animation slideLeftIn;
+	private Animation slideLeftOut;
+	private Animation slideRightIn;
+	private Animation slideRightOut;
+	private boolean firsttab;
 
 	private static final int LOAD_ERROR = 0;
 	private static final int LOAD_OK = 1;
@@ -116,7 +130,33 @@ public class MetroSP extends Activity implements Runnable {
 			}
 		});
 
+		/* Setup the viewFlipper to do the slidding tab */
+		viewFlipper = (ViewFlipper)findViewById(R.id.flipper);
+		slideLeftIn = AnimationUtils.loadAnimation(this, R.anim.slide_left_in);
+		slideLeftOut = AnimationUtils.loadAnimation(this, R.anim.slide_left_out);
+		slideRightIn = AnimationUtils.loadAnimation(this, R.anim.slide_right_in);
+		slideRightOut = AnimationUtils.loadAnimation(this, R.anim.slide_right_out);
+		firsttab = true;
+
+		/* Set listview OnClick Handler to show package status */
+		listview.setOnItemClickListener(listviewOnClick);
+
 		refreshData();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		/* Handle the BACK KEY when lookig the extended status
+		 * for the Metro Line
+		 */
+		if (keyCode == KeyEvent.KEYCODE_BACK && !firsttab) {
+			viewFlipper.setInAnimation(slideRightIn);
+			viewFlipper.setOutAnimation(slideRightOut);
+			viewFlipper.showPrevious();
+			firsttab = true;
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	public void refreshData() {
@@ -142,6 +182,42 @@ public class MetroSP extends Activity implements Runnable {
 		msg.arg1 = ret;
 		handler.sendMessage(msg);
 	}
+
+	private AdapterView.OnItemClickListener listviewOnClick = new AdapterView.OnItemClickListener() {
+
+		/* Load the Extended Status and call the animation */
+		public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+				long arg3) {
+			MetroLine item = adapter.getItem(position);
+
+			TextView linha = (TextView) findViewById(R.id.textLinhaDetail);
+			TextView status = (TextView) findViewById(R.id.textStatusDetail);
+
+			String long_status = item.get_Description();
+			String full_status = null;
+			if (long_status.length() > 1)
+				full_status = item.get_Status() + " - " + long_status;
+			else
+				full_status = item.get_Status();
+
+			linha.setText(item.get_Line());
+			status.setText(full_status);
+
+			ImageView icon = (ImageView) findViewById(R.id.imageView1Detail);
+
+			Resources r = getResources();
+			int status_res = r.getIdentifier(item.get_StatusColor().toLowerCase(),
+					"drawable", "net.amdroid.metrosp");
+			Bitmap status_img = BitmapFactory.decodeResource(
+					getResources(), status_res);
+			icon.setImageBitmap(status_img);
+
+			viewFlipper.setInAnimation(slideLeftIn);
+			viewFlipper.setOutAnimation(slideLeftOut);
+			viewFlipper.showNext();
+			firsttab = false;
+		}
+	};
 
 	private Handler handler = new Handler() {
 		@Override
