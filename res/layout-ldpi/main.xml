@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/white">
+	<LinearLayout android:id="@+id/addsLayout"
+		android:layout_alignParentBottom="true" android:layout_width="fill_parent"
+		android:orientation="vertical" android:layout_height="50px"
+		android:background="@color/white"></LinearLayout>
+	<RelativeLayout android:id="@+id/titleLayout"
+		android:layout_height="28px" android:layout_alignParentTop="true"
+		android:layout_width="fill_parent">
+		<ImageView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/imageView1"
+			android:src="@drawable/metrosp" android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"></ImageView>
+	</RelativeLayout>
+	<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/flipper" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="@color/white"
+		android:layout_gravity="center_vertical" android:layout_marginTop="5sp"
+		android:layout_marginBottom="5sp" android:layout_marginLeft="5sp"
+		android:layout_marginRight="5sp" android:layout_below="@+id/titleLayout"
+		android:layout_above="@+id/addsLayout">
+		<LinearLayout android:id="@+id/listLayout"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:background="@color/white" android:layout_below="@+id/titleLayout"
+			android:layout_above="@+id/addsLayout">
+			<ListView android:layout_width="fill_parent"
+				android:cacheColorHint="#00000000" android:focusableInTouchMode="true"
+				android:id="@+id/metroList" android:layout_marginTop="5sp"
+				android:layout_marginBottom="5sp" android:background="@layout/corner"
+				android:layout_marginLeft="5sp" android:layout_marginRight="5sp"
+				android:drawSelectorOnTop="false" android:dividerHeight="1px"
+				android:footerDividersEnabled="true" android:headerDividersEnabled="true"
+				android:layout_span="3" android:orientation="vertical"
+				android:scrollbars="vertical|none" android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical" android:divider="#f9f9f9">
+			</ListView>
+		</LinearLayout>
+		<RelativeLayout android:id="@+id/statusLayout"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@layout/corner" android:layout_below="@+id/titleLayout"
+			android:layout_above="@+id/addsLayout" android:layout_gravity="center_vertical"
+			android:layout_marginTop="5sp" android:layout_marginBottom="5sp"
+			android:layout_marginLeft="5sp" android:layout_marginRight="5sp">
+			<ImageView android:id="@+id/imageView1Detail" android:src="@drawable/verde"
+				android:layout_alignParentLeft="true" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:paddingLeft="5sp"
+				android:paddingTop="5sp"></ImageView>
+			<TextView android:layout_height="wrap_content"
+				android:layout_toRightOf="@+id/imageView1Detail" android:text="TextView"
+				android:layout_alignTop="@+id/imageView1Detail" android:id="@+id/textLinhaDetail"
+				android:layout_marginLeft="15dip" android:textStyle="bold"
+				android:layout_width="fill_parent" android:paddingRight="5dip"
+				android:paddingTop="5sp" android:textColor="@color/textcolor"></TextView>
+			<TextView android:layout_height="wrap_content" android:text="TextView"
+				android:layout_below="@+id/textLinhaDetail"
+				android:layout_alignLeft="@+id/textLinhaDetail"
+				android:layout_alignRight="@+id/textLinhaDetail" android:id="@+id/textStatusDetail"
+				android:maxLines="8" android:layout_width="fill_parent"
+				android:textColor="@color/textcolor" android:paddingBottom="5sp"></TextView>
+		</RelativeLayout>
+	</ViewFlipper>
+</RelativeLayout>
