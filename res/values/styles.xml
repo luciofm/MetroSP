@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Black styles -->
+	<style name="list_style_black">
+		<item name="android:background">@layout/corner_black</item>
+	</style>
+
+	<style name="view_style_black">
+        <item name="android:background">@color/black</item>
+		<item name="android:textColor">@color/almost_white</item>
+	</style>
+	<style name="title_style_black">
+		<item name="android:src">@drawable/metrosp_black</item>
+	</style>
+	<style name="text_style_black">
+		<item name="android:textColor">@color/almost_white</item>
+	</style>
+
+	
+	<!-- White styles -->
+	<style name="list_style_white">
+		<item name="android:background">@layout/corner_white</item>
+	</style>
+
+	<style name="view_style_white">
+        <item name="android:background">@color/white</item>
+		<item name="android:textColor">@color/textcolor</item>
+	</style>
+	<style name="title_style_white">
+		<item name="android:src">@drawable/metrosp_white</item>
+	</style>
+	<style name="text_style_white">
+		<item name="android:textColor">@color/textcolor</item>
+	</style>
+</resources>
+

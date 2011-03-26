@@ -65,6 +65,14 @@
          stdDeviation="0.70722644"
          id="feGaussianBlur4665" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3853">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.0304408"
+         id="feGaussianBlur3855" />
+    </filter>
   </defs>
   <sodipodi:namedview
      inkscape:window-height="724"
@@ -79,9 +87,9 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="false"
-     inkscape:zoom="0.66163733"
-     inkscape:cx="542.32078"
-     inkscape:cy="359.48216"
+     inkscape:zoom="1.264955"
+     inkscape:cx="549.04246"
+     inkscape:cy="473.32058"
      inkscape:window-x="1280"
      inkscape:window-y="250"
      inkscape:current-layer="svg2"
@@ -162,10 +170,25 @@
      inkscape:export-filename="/home/gcc/workspace/MetroSP/design/promo.png"
      inkscape:export-xdpi="90.010002"
      inkscape:export-ydpi="90.010002" />
+  <text
+     transform="matrix(0.23441708,0,0,0.23433298,259.1528,492.32886)"
+     sodipodi:linespacing="125%"
+     id="text3015"
+     y="648.91437"
+     x="393.26447"
+     style="font-size:208.3765564px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4007);font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
+     xml:space="preserve"
+     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
+     inkscape:export-xdpi="90.010002"
+     inkscape:export-ydpi="90.010002"><tspan
+       y="648.91437"
+       x="393.26447"
+       id="tspan3017"
+       sodipodi:role="line">SP</tspan></text>
   <g
-     id="g3834"
-     transform="matrix(2.5000001,0,0,2.5000001,-391.66453,-814.84225)"
-     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-ldpi/metrosp.png"
+     id="g3857"
+     transform="matrix(0.30494995,0,0,0.30494995,283.58699,369.08921)"
+     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/metrosp.png"
      inkscape:export-xdpi="90.010002"
      inkscape:export-ydpi="90.010002">
     <g
@@ -173,7 +196,7 @@
        inkscape:export-xdpi="90.010002"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
        id="g3011"
-       transform="matrix(0.98773428,0,0,0.98601828,260.59232,476.09214)"
+       transform="matrix(2.4693358,0,0,2.4650458,288.50271,477.95189)"
        style="fill:#000000;fill-opacity:1;filter:url(#filter4003)">
       <path
          d="m 21.5,2.75 c 8.53,-2.54 18.3,1.38 22.74,9.07 4.34,7.08 3.57,17.09 -2.05,23.29 -6.42,7.91 -19.28,9.27 -27.2,2.87 C 10.05,34.29 6.84,28.18 7.04,21.96 6.81,13.25 13.25,5.17 21.5,2.75 m -5.54,7.31 c -8.05,6.83 -6.45,21.03 2.76,26.1 0.95,-1.16 1.91,-2.32 2.87,-3.48 -0.67,-0.12 -2,-0.37 -2.66,-0.49 -1.973235,-5.587941 -1.452353,-10.298162 -1.37,-16.2 -0.0049,-1.913897 0.52,-4.42 2.76,-4.56 4.46,-0.29 8.96,-0.29 13.42,0 2.73,0.19 2.751029,2.167353 2.786103,4.444632 C 36.403382,22.006103 36.82647,26.750883 35.14,32.2 c -0.66,0.13 -1.97,0.39 -2.63,0.52 1.07,1.17 2.08,2.41 3.25,3.49 6.32,-4.5 9.68,-13.12 6.35,-20.45 C 38.41,5.51 23.6,2.31 15.96,10.06 m 7.053897,4.195588 c 1.305,0.05 6.516103,0.0511 7.826103,0.0261 L 30.83,12.63 c -1.412279,0.03603 -7.075441,-0.0072 -7.816103,5.88e-4 M 19.67,15.82 c 0.0078,0.41397 -0.01873,5.216367 0.01,7.39 4.88,0.07 9.76,0.105588 14.63,0.05 0.0054,-2.934044 0.06713,-4.938309 0.0339,-7.5 -4.88,-0.02338 -8.312279,0.0161 -14.673897,0.06 m 1.22,21.43 c 3.98,1.45 8.32,1.48 12.31,0.01 -0.66,-0.83 -2.701914,-3.554098 -3.381914,-4.364098 -2.79,0.02 -2.798385,-0.01785 -5.588385,-0.03785 C 23.579701,33.668049 21.53,36.44 20.89,37.25 z"
@@ -182,29 +205,14 @@
          style="fill:#000000;fill-opacity:1"
          inkscape:connector-curvature="0" />
     </g>
-    <text
-       inkscape:export-ydpi="90.010002"
-       inkscape:export-xdpi="90.010002"
-       inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
-       xml:space="preserve"
-       style="font-size:208.3765564px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4007);font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
-       x="393.26447"
-       y="648.91437"
-       id="text3015"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.09376683,0,0,0.09373319,248.85236,457.71493)"><tspan
-         sodipodi:role="line"
-         id="tspan3017"
-         x="393.26447"
-         y="648.91437">SP</tspan></text>
     <rect
        inkscape:export-ydpi="90.010002"
        inkscape:export-xdpi="90.010002"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
-       y="472.93265"
-       x="262.10147"
-       height="49.919998"
-       width="49.919998"
+       y="470.05316"
+       x="292.27557"
+       height="124.8"
+       width="124.8"
        id="rect2994"
        style="fill:none;stroke:none" />
     <rect
@@ -213,18 +221,18 @@
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
        style="fill:none;stroke:none"
        id="rect2996"
-       width="41.60754"
-       height="41.592697"
-       x="266.25769"
-       y="477.09631" />
+       width="104.01885"
+       height="103.98175"
+       x="302.66614"
+       y="480.46231" />
     <rect
        inkscape:export-ydpi="90.010002"
        inkscape:export-xdpi="90.010002"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
-       y="478.48279"
-       x="267.64462"
-       height="38.819809"
-       width="38.833748"
+       y="483.9285"
+       x="306.13345"
+       height="97.04953"
+       width="97.084373"
        id="rect2998"
        style="fill:none;stroke:none" />
     <g
@@ -232,7 +240,7 @@
        inkscape:export-xdpi="90.010002"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
        style="fill:#ff2a2a;fill-opacity:1"
-       transform="matrix(0.98773428,0,0,0.98601828,260.59232,476.09214)"
+       transform="matrix(2.4693358,0,0,2.4650458,288.50271,477.95189)"
        id="g3192">
       <path
          inkscape:connector-curvature="0"
@@ -241,24 +249,9 @@
          id="path3194"
          d="m 21.5,2.75 c 8.53,-2.54 18.3,1.38 22.74,9.07 4.34,7.08 3.57,17.09 -2.05,23.29 -6.42,7.91 -19.28,9.27 -27.2,2.87 C 10.05,34.29 6.84,28.18 7.04,21.96 6.81,13.25 13.25,5.17 21.5,2.75 m -5.54,7.31 c -8.05,6.83 -6.45,21.03 2.76,26.1 0.95,-1.16 1.91,-2.32 2.87,-3.48 -0.67,-0.12 -2,-0.37 -2.66,-0.49 -1.973235,-5.587941 -1.452353,-10.298162 -1.37,-16.2 -0.0049,-1.913897 0.52,-4.42 2.76,-4.56 4.46,-0.29 8.96,-0.29 13.42,0 2.73,0.19 2.751029,2.167353 2.786103,4.444632 C 36.403382,22.006103 36.82647,26.750883 35.14,32.2 c -0.66,0.13 -1.97,0.39 -2.63,0.52 1.07,1.17 2.08,2.41 3.25,3.49 6.32,-4.5 9.68,-13.12 6.35,-20.45 C 38.41,5.51 23.6,2.31 15.96,10.06 m 7.053897,4.195588 c 1.305,0.05 6.516103,0.0511 7.826103,0.0261 L 30.83,12.63 c -1.412279,0.03603 -7.075441,-0.0072 -7.816103,5.88e-4 M 19.67,15.82 c 0.0078,0.41397 -0.01873,5.216367 0.01,7.39 4.88,0.07 9.76,0.105588 14.63,0.05 0.0054,-2.934044 0.06713,-4.938309 0.0339,-7.5 -4.88,-0.02338 -8.312279,0.0161 -14.673897,0.06 m 1.22,21.43 c 3.98,1.45 8.32,1.48 12.31,0.01 -0.66,-0.83 -2.701914,-3.554098 -3.381914,-4.364098 -2.79,0.02 -2.798385,-0.01785 -5.588385,-0.03785 C 23.579701,33.668049 21.53,36.44 20.89,37.25 z" />
     </g>
-    <text
-       inkscape:export-ydpi="90.010002"
-       inkscape:export-xdpi="90.010002"
-       inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
-       transform="scale(1.0001795,0.99982054)"
-       sodipodi:linespacing="125%"
-       id="text3000"
-       y="518.63287"
-       x="285.67624"
-       style="font-size:19.53530693px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
-       xml:space="preserve"><tspan
-         y="518.63287"
-         x="285.67624"
-         id="tspan3002"
-         sodipodi:role="line">SP</tspan></text>
     <g
        id="g3012"
-       transform="matrix(0.98773428,0,0,0.98601828,260.59232,476.09214)"
+       transform="matrix(2.4693358,0,0,2.4650458,288.50271,477.95189)"
        style="fill:#ff2a2a;fill-opacity:1"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
        inkscape:export-xdpi="90.010002"
@@ -271,20 +264,35 @@
          inkscape:connector-curvature="0" />
     </g>
     <text
+       inkscape:export-ydpi="90.010002"
+       inkscape:export-xdpi="90.010002"
+       inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
+       transform="matrix(1.0001795,0,0,0.99982052,4.16,0)"
+       sodipodi:linespacing="125%"
+       id="text3000"
+       y="584.17584"
+       x="351.27765"
+       style="font-size:48.83826828px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;filter:url(#filter3853);font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
+       xml:space="preserve"><tspan
+         y="584.17584"
+         x="351.27765"
+         id="tspan3002"
+         sodipodi:role="line">SP</tspan></text>
+    <text
        xml:space="preserve"
-       style="font-size:19.53530693px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;fill-opacity:1;stroke:none;font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
-       x="285.67624"
-       y="518.63287"
+       style="font-size:48.83826828px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f2f2f2;fill-opacity:1;stroke:none;font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
+       x="353.35727"
+       y="582.09546"
        id="text3016"
        sodipodi:linespacing="125%"
-       transform="scale(1.0001795,0.99982054)"
+       transform="scale(1.0001795,0.99982053)"
        inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/iconsmall.png"
        inkscape:export-xdpi="90.010002"
        inkscape:export-ydpi="90.010002"><tspan
          sodipodi:role="line"
          id="tspan3018"
-         x="285.67624"
-         y="518.63287">SP</tspan></text>
+         x="353.35727"
+         y="582.09546">SP</tspan></text>
   </g>
   <g
      inkscape:export-ydpi="90.010002"
@@ -406,13 +414,13 @@
   <text
      inkscape:export-ydpi="90.010002"
      inkscape:export-xdpi="90.010002"
-     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-ldpi/metrosp.png"
-     transform="matrix(0.56421666,0,0,0.56401417,194.15251,218.35066)"
+     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/metrosp.png"
+     transform="matrix(1.0048837,0,0,1.0045231,73.012695,30.872386)"
      sodipodi:linespacing="125%"
      id="text4655"
      y="515.38873"
      x="334.81772"
-     style="font-size:59.01164627px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;filter:url(#filter4663);font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
+     style="font-size:59.01164627px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#cccccc;fill-opacity:1;stroke:none;filter:url(#filter4663);font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
      xml:space="preserve"><tspan
        y="515.38873"
        x="334.81772"
@@ -420,17 +428,17 @@
        sodipodi:role="line">METRO SP</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:33.28937912px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
-     x="381.82034"
-     y="507.95502"
+     style="font-size:59.28920364px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f2f2f2;fill-opacity:1;stroke:none;font-family:Hemi Head 426;-inkscape-font-specification:'Hemi Head 426,'"
+     x="407.30267"
+     y="548.69086"
      id="text3830"
      sodipodi:linespacing="125%"
      transform="scale(1.0001795,0.99982054)"
-     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-ldpi/metrosp.png"
+     inkscape:export-filename="/home/gcc/workspace/MetroSP/res/drawable-hdpi/metrosp.png"
      inkscape:export-xdpi="90.010002"
      inkscape:export-ydpi="90.010002"><tspan
        sodipodi:role="line"
        id="tspan3832"
-       x="381.82034"
-       y="507.95502">METRO SP</tspan></text>
+       x="407.30267"
+       y="548.69086">METRO SP</tspan></text>
 </svg>

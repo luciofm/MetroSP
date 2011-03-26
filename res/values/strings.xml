@@ -3,4 +3,5 @@
     <string name="app_name">Metro SP</string>
     <string name="metro_url">http://www.metro.sp.gov.br/MetroStatusLinha/diretoDoMetro.aspx</string>
     <string name="metro_url_test">http://www.amdroid.net/apps/metro.html</string>
+    <string name="preferences">Preferências</string>
 </resources>

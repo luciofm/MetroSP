@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- View styles -->
+	<attr name="listStyle" format="reference" />
+	<attr name="viewStyle" format="reference" />
+	<attr name="titleStyle" format="reference"/>
+	<attr name="textStyle" format="reference" />
+</resources>

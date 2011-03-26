@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:background="@color/white">
+	style="?viewStyle">
 	<LinearLayout android:id="@+id/addsLayout"
 		android:layout_alignParentBottom="true" android:layout_width="fill_parent"
 		android:orientation="vertical" android:layout_height="50px"
-		android:background="@color/white"></LinearLayout>
+		style="?viewStyle"></LinearLayout>
 	<RelativeLayout android:id="@+id/titleLayout"
-		android:layout_height="50px" android:layout_alignParentTop="true"
+		android:layout_alignParentTop="true"
 		android:layout_width="fill_parent">
 		<ImageView android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:id="@+id/imageView1"
-			android:src="@drawable/metrosp" android:layout_centerHorizontal="true"
+			style="?titleStyle" android:layout_centerHorizontal="true"
 			android:layout_centerVertical="true"></ImageView>
 	</RelativeLayout>
 	<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/flipper" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:background="@color/white"
+		android:layout_height="wrap_content" style="?viewStyle"
 		android:layout_gravity="center_vertical" android:layout_marginTop="10sp"
 		android:layout_marginBottom="10sp" android:layout_marginLeft="10sp"
 		android:layout_marginRight="10sp" android:layout_below="@+id/titleLayout"
 		android:layout_above="@+id/addsLayout">
 		<LinearLayout android:id="@+id/listLayout"
 			android:layout_width="fill_parent" android:layout_height="fill_parent"
-			android:background="@color/white" android:layout_below="@+id/titleLayout"
-			android:layout_above="@+id/addsLayout">
+			android:layout_below="@+id/titleLayout"
+			android:layout_above="@+id/addsLayout" style="?viewStyle">
 			<ListView android:layout_width="fill_parent"
 				android:cacheColorHint="#00000000" android:focusableInTouchMode="true"
 				android:id="@+id/metroList" android:layout_marginTop="10sp"
-				android:layout_marginBottom="10sp" android:background="@layout/corner"
+				android:layout_marginBottom="10sp" style="?listStyle"
 				android:layout_marginLeft="10sp" android:layout_marginRight="10sp"
 				android:drawSelectorOnTop="false" android:dividerHeight="2px"
 				android:footerDividersEnabled="true" android:headerDividersEnabled="true"
@@ -39,7 +39,7 @@
 		</LinearLayout>
 		<RelativeLayout android:id="@+id/statusLayout"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:background="@layout/corner" android:layout_below="@+id/titleLayout"
+			style="?listStyle" android:layout_below="@+id/titleLayout"
 			android:layout_above="@+id/addsLayout" android:layout_gravity="center_vertical"
 			android:layout_marginTop="10sp" android:layout_marginBottom="10sp"
 			android:layout_marginLeft="10sp" android:layout_marginRight="10sp">
@@ -52,13 +52,13 @@
 				android:layout_alignTop="@+id/imageView1Detail" android:id="@+id/textLinhaDetail"
 				android:layout_marginLeft="15dip" android:textStyle="bold"
 				android:layout_width="fill_parent" android:paddingRight="5dip"
-				android:paddingTop="5sp" android:textColor="@color/textcolor"></TextView>
+				android:paddingTop="5sp" style="?textStyle"></TextView>
 			<TextView android:layout_height="wrap_content" android:text="TextView"
 				android:layout_below="@+id/textLinhaDetail"
 				android:layout_alignLeft="@+id/textLinhaDetail"
 				android:layout_alignRight="@+id/textLinhaDetail" android:id="@+id/textStatusDetail"
 				android:maxLines="8" android:layout_width="fill_parent"
-				android:textColor="@color/textcolor" android:paddingBottom="5sp"></TextView>
+				style="?textStyle" android:paddingBottom="5sp"></TextView>
 		</RelativeLayout>
 	</ViewFlipper>
 </RelativeLayout>

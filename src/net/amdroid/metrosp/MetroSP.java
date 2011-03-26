@@ -47,16 +47,21 @@ import com.google.ads.AdView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -93,17 +98,26 @@ public class MetroSP extends Activity implements Runnable {
 	private static final int LOAD_ERROR = 0;
 	private static final int LOAD_OK = 1;
 
+	private static final int MENU_PREFS = 0;
+	private static final int PREFERENCES_ACTIVITY = 1;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+
+		/* Select the configured Theme */
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		String themeStr = prefs.getString(Preferences.PREF_THEME, "White.Theme");
+		int theme = getResources().getIdentifier(themeStr, "style", "net.amdroid.metrosp");
+		setTheme(theme);
+
 		setContentView(R.layout.main);
 
-	    AdView adView = new AdView(this, AdSize.BANNER, YOUR_ADMOB_ID_HERE);
+	    AdView adView = new AdView(this, AdSize.BANNER, "a14d8821cfdf925");
 	    LinearLayout layout = (LinearLayout)findViewById(R.id.addsLayout);
-	    android.view.ViewGroup.LayoutParams params = layout.getLayoutParams();
 	    layout.addView(adView);
 	    AdRequest adrequest = new AdRequest();
 	    adView.loadAd(adrequest);
@@ -143,6 +157,44 @@ public class MetroSP extends Activity implements Runnable {
 
 		refreshData();
 	}
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+
+		menu.add(0, MENU_PREFS, 0, getResources().getText(R.string.preferences));
+		MenuItem item = menu.findItem(MENU_PREFS);
+		item.setIcon(R.drawable.ic_menu_preferences);
+
+		return true;
+	}
+
+	@Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+		switch (item.getItemId()) {
+			case MENU_PREFS: {
+				startActivityForResult(new Intent(this, Preferences.class), PREFERENCES_ACTIVITY);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		switch (requestCode) {
+			case PREFERENCES_ACTIVITY: {
+				Intent intent = new Intent(this, MetroSP.class);
+
+				finish();
+				startActivity(intent);
+			}
+		}
+	}
+
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
