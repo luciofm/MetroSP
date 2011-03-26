@@ -7,5 +7,5 @@
 	android:summary="Selecione o Tema que desejas usar."
 	android:entries="@array/theme_options"
 	android:entryValues="@array/theme_values"
-	android:dialogTitle="Selecione o Tema"/>
+	android:dialogTitle="Selecione o Tema" android:defaultValue="White.Theme"/>
 </PreferenceScreen>
